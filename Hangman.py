@@ -1,5 +1,11 @@
 """Hangman Game"""
 def hangman_game():
+    def proceed_fun(question):
+        if question==True:
+            hangman_game()
+        else: quit
+    
+    proceed=False
     choice=input("Type 'a' for an automated game. Otherwise: select your word:")
     print("Welcome to HANGMAN!")
     import random
@@ -58,7 +64,7 @@ def hangman_game():
     length=list(length)
     count=0
 
-    while True:
+    while proceed==False:
         
         guess=input("Choose a letter or word:").lower() 
         if guess=="quit":
@@ -116,8 +122,22 @@ def hangman_game():
         if guess_length>1:
             if guess in word:
                 print("Yay! You won! The word was:",word)
-                time.sleep(20)
-                quit()
+                time.sleep(2)
+                bg=input("Type 'a' to play again. Type 'q' to quit. ")
+                while bg != "a" and bg !="q":
+                    bg=input("Type 'a' to play again. Type 'q' to quit. ")
+                if bg=="a":
+                    proceed=True
+                if bg=="q":
+                    time.sleep(1)
+                    print("Thanks for playing.")
+                    time.sleep(1)
+                    print("Goodbye!")
+                    time.sleep(1)
+                    quit()
+                proceed_fun(proceed)
+                    
+                    
             else:
                 count=count+1
                 print("nope")
@@ -136,12 +156,23 @@ def hangman_game():
                 elif count==7:
                     print(hangman7)
                     print("You lose!!! The word was:",word)
-                    time.sleep(20)
-                    quit()
+                    time.sleep(2)
+                    bg=input("Type 'a' to play again. Type 'q' to quit. ")
+                    while bg != "a" and bg !="q":
+                        bg=input("Type 'a' to play again. Type 'q' to quit. ")
+                    if bg=="a":
+                        proceed=True
+                    if bg=="q":
+                        time.sleep(1)
+                        print("Thanks for playing.")
+                        time.sleep(1)
+                        print("Goodbye!")
+                        time.sleep(1)
+                        quit()
+                    proceed_fun(proceed)
                     
         else:
             if guess in word:
-                
                     
                 print("Yes, that letter is in the word!")
 
@@ -164,8 +195,19 @@ def hangman_game():
                 elif count==7:
                     print(hangman7)
                     print("You lose!!! The word was:",word)
-                    time.sleep(20)
-                    quit()
-
+                    time.sleep(2)
+                    bg=input("Type 'a' to play again. Type 'q' to quit. ")
+                    while bg != "a" and bg !="q":
+                        bg=input("Type 'a' to play again. Type 'q' to quit. ")
+                    if bg=="a":
+                        proceed=True
+                    if bg=="q":
+                        time.sleep(1)
+                        print("Thanks for playing.")
+                        time.sleep(1)
+                        print("Goodbye!")
+                        time.sleep(1)
+                        quit()
+                    proceed_fun(proceed)
 
 hangman_game()
